@@ -15,11 +15,11 @@
   "author": "Sven Mutzl",
   "license": "MIT",
   "dependencies": {
-    "coveralls": "^3.0.0",
-    "istanbul": "^0.4.5",
     "superagent": "^3.8.2"
   },
   "devDependencies": {
+    "coveralls": "^3.0.0",
+    "istanbul": "^0.4.5",
     "@types/core-js": "^0.9.44",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
