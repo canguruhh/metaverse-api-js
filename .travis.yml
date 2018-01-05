@@ -1,7 +1,10 @@
 language: node_js
 sudo: true
-
+env:
+  - HOST=testnet.mvs.org
+  - PORT=443
+  - PROTOCOL=https
 before_script:
-  - npm i
+  - sudo npm i -g grunt && npm i
 script:
   - grunt
