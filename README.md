@@ -6,6 +6,8 @@
   <a href="https://travis-ci.org/canguruhh/metaverse-api-js">
      <img src="https://travis-ci.org/canguruhh/metaverse-api-js.png?branch=master" alt="Build status">
   </a>
+  <a href='https://coveralls.io/github/canguruhh/metaverse-api-js?branch=master'><img src='https://coveralls.io/repos/github/canguruhh/metaverse-api-js/badge.svg?branch=master' alt='Coverage Status' /></a>
+
   <br>
   API wrapper for the Metaverse full node wallet
 </p>
