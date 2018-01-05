@@ -2,7 +2,7 @@ var chai = require("chai"),
     chaiAsPromised = require("chai-as-promised"),
     should = chai.should(),
     expect = chai.expect,
-    MVSD = new(require('../dist').MVSD)();
+    MVSD = new(require('../').MVSD)();
 
 chai.use(chaiAsPromised);
 

@@ -1,4 +1,4 @@
-import * as Request from 'request-promise'
+import * as Request from 'superagent'
 import { Options } from './options'
 
 export class MVSD {
@@ -11,33 +11,37 @@ export class MVSD {
 
     private getUrl = () => this.options.getUrl()
 
-    private send = (method, params, id=0) => {
-        return Request({
-            "uri": this.getUrl() + '/rpc/v2',
-            "method": 'POST',
-            "body": {
-                "id": id,
-                "jsonrpc": "2.0",
-                "method": method,
-                "params": params
-            },
-            "json": true
+    private send = (method, params, id = 0) => {
+        return new Promise((resolve,reject) => {
+            return Request.post(this.getUrl() + '/rpc/v2')
+                .send({
+                    "id": id,
+                    "jsonrpc": "2.0",
+                    "method": method,
+                    "params": params
+                })
+                .set('accept', 'json')
+                .end((err, response) => {
+                    try{
+                        response=JSON.parse(response.text)
+                    } catch(e){}
+                    if(err)
+                        throw Error(err.message)
+                    else if (response.error!=undefined)
+                        reject({ id: id, name: response.error.code, message: response.error.message })
+                    else {
+                        response.result.request_id = response.id
+                        resolve(response.result)
+                    }
+                });
         })
-            .then((response) => {
-                if (response.error)
-                    throw { id: id, name: response.error.code, message: response.error.message }
-                else {
-                    response.result.request_id = response.id
-                    return response.result
-                }
-            })
     }
 
-    getblockheader = (id=undefined) => this.send('getblockheader', [], id)
+    getblockheader = (id = undefined) => this.send('getblockheader', [], id)
     fetch_header = this.getblockheader
     getbestblockhash = this.getblockheader
     getbestblockheader = this.getblockheader
 
-    getblock = (hash, id=undefined) => this.send('getblock',[hash])
+    getblock = (hash, id = undefined) => this.send('getblock', [hash])
 
 }
