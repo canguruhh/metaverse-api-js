@@ -31,8 +31,10 @@
     "grunt": "^1.0.1",
     "grunt-browserify": "^5.2.0",
     "grunt-contrib-uglify": "^3.3.0",
+    "grunt-mocha-test": "^0.13.3",
     "grunt-typescript": "^0.8.0",
     "grunt-typescript-using-tsconfig": "^0.7.1",
+    "mocha": "^4.1.0",
     "tsify": "^3.0.4",
     "typescript": "^2.6.2"
   }

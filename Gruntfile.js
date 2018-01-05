@@ -36,14 +36,28 @@ module.exports = function(grunt) {
                     rootDir: "./" // optional 
                 }
             }
+        },
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec',
+                    captureFile: './dist/result.txt',
+                    quiet: false,
+		                timeout: 10000,
+                    clearRequireCache: false,
+                    noFail: false
+                },
+                src: ['./test/*.js']
+            }
         }
     });
     grunt.loadNpmTasks('grunt-browserify');
-    grunt.loadNpmTasks('grunt-typescript');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-typescript-using-tsconfig');
 
-    grunt.registerTask('default', ['node','browser']);
+    grunt.registerTask('default', ['node','browser','test']);
+    grunt.registerTask('test', ['mochaTest']);
     grunt.registerTask('browser', ['browserify', 'uglify']);
     grunt.registerTask('node', ['typescriptUsingTsConfig']);
 
