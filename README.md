@@ -3,7 +3,7 @@
     <img src="https://mvs.org/images/metaverselogo.png" alt="">
   </a>
   <br>
-  <a href="https://travis-ci.org/canguruhh/metaversejs">
+  <a href="https://travis-ci.org/canguruhh/metaverse-api-js">
      <img src="https://travis-ci.org/canguruhh/metaverse-api-js.png?branch=master" alt="Build status">
   </a>
   <br>
