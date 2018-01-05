@@ -3,9 +3,9 @@ var chai = require("chai"),
     should = chai.should(),
     expect = chai.expect,
     MVSD = new(require('../').MVSD)({
-        host: (process.env.HOST)?process.env.HOST:'127.0.0.1',
-        protocol: (process.env.PROTOCOL)?process.env.PROTOCOL:'https',
-        port: (process.env.PORT)?process.env.PORT:443
+        host: (process.env.HOST) ? process.env.HOST: '127.0.0.1',
+        protocol: (process.env.PROTOCOL) ? process.env.PROTOCOL : 'http',
+        port: (process.env.PORT) ? process.env.PORT : 8820
     });
 
 chai.use(chaiAsPromised);
