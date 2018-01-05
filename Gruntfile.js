@@ -43,6 +43,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-typescript-using-tsconfig');
 
+    grunt.registerTask('default', ['node','browser']);
     grunt.registerTask('browser', ['browserify', 'uglify']);
     grunt.registerTask('node', ['typescriptUsingTsConfig']);
 
