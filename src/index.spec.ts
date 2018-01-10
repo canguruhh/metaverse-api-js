@@ -17,7 +17,7 @@ describe('Block functions', () => {
         (process.env.PROTOCOL) ? process.env.PROTOCOL : 'http'
     )
     var mvsd_broken = new MVSD(
-        (process.env.HOST) ? process.env.HOST : '127.0.0.1',
+        '127.0.0.1',
         8,
         (process.env.PROTOCOL) ? process.env.PROTOCOL : 'http',
     )
