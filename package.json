@@ -4,8 +4,25 @@
     "description": "API for the Metaverse Blockchain fullnode wallet",
     "main": "index.js",
     "scripts": {
-        "test": "mocha -t 100000 test",
-        "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --timeout 100000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+        "test": "nyc mocha",
+        "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --timeout 100000 -r ts-node/register -R spec src/**/*.spec.ts && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+        "nyc": {
+            "include": [
+                "src/**/*.ts"
+            ],
+            "extension": [
+                ".ts"
+            ],
+            "require": [
+                "ts-node/register"
+            ],
+            "reporter": [
+                "text-summary",
+                "html"
+            ],
+            "sourceMap": true,
+            "instrument": true
+        }
     },
     "keywords": [
         "metaverse",
@@ -15,25 +32,27 @@
     "author": "Sven Mutzl",
     "license": "MIT",
     "dependencies": {
-        "superagent": "^3.8.2"
+        "superagent": "^3.8.2",
+        "ts-node": "^4.1.0"
     },
     "devDependencies": {
-        "coveralls": "^3.0.0",
-        "istanbul": "^0.4.5",
         "@types/core-js": "^0.9.44",
         "babel-core": "^6.26.0",
         "babel-preset-env": "^1.6.1",
         "babelify": "^8.0.0",
         "chai": "^4.1.2",
         "chai-as-promised": "^7.1.1",
+        "coveralls": "^3.0.0",
         "grunt": "^1.0.1",
         "grunt-browserify": "^5.2.0",
         "grunt-contrib-uglify": "^3.3.0",
         "grunt-mocha-test": "^0.13.3",
         "grunt-typescript": "^0.8.0",
         "grunt-typescript-using-tsconfig": "^0.7.1",
+        "istanbul": "^0.4.5",
         "mocha": "^4.1.0",
         "nyc": "^11.4.1",
+        "source-map-support": "^0.5.0",
         "tsify": "^3.0.4",
         "typescript": "^2.6.2"
     },

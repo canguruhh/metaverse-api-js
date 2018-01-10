@@ -1,1 +1,1 @@
-module.exports = require('./dist/node/index.js');
+exports.MVSD = require('./dist/node/index.js').MVSD;

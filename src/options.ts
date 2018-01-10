@@ -1,13 +1,6 @@
 export class Options{
     
-    protocol: string
-    host: string
-    port: number
-
-    constructor(private config: any){
-        this.protocol=config.protocol
-        this.host=config.host
-        this.port=config.port
+    constructor(private host, private port, private protocol){
     }
 
     getProtocol = () => (this.protocol) ? this.protocol : "http"

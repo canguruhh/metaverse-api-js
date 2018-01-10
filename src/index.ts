@@ -5,8 +5,8 @@ export class MVSD {
 
     private options: Options
 
-    constructor(config: any = {}) {
-        this.options = new Options(config)
+    constructor(host=undefined, port=undefined, protocol=undefined) {
+        this.options = new Options(host, port, protocol)
     }
 
     private getUrl = () => this.options.getUrl()
@@ -25,8 +25,9 @@ export class MVSD {
                     try{
                         response=JSON.parse(response.text)
                     } catch(e){}
-                    if(err)
-                        throw Error(err.message)
+                    if(err){
+                        reject(Error(err.message))
+                    }
                     else if (response.error!=undefined)
                         reject({ id: id, name: response.error.code, message: response.error.message })
                     else {
