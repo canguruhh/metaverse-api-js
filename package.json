@@ -4,7 +4,7 @@
     "description": "API for the Metaverse Blockchain fullnode wallet",
     "main": "index.js",
     "scripts": {
-        "test": "nyc mocha",
+        "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --timeout 100000 -r ts-node/register -R spec src/**/*.spec.ts",
         "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --timeout 100000 -r ts-node/register -R spec src/**/*.spec.ts && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
         "nyc": {
             "include": [

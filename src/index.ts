@@ -44,5 +44,7 @@ export class MVSD {
     getbestblockheader = this.getblockheader
 
     getblock = (hash, id = undefined) => this.send('getblock', [hash])
+    
+    getnewaccount = (username, password, language='en', id) => this.send('getnewaccount', ['-l',language,username,password], id)
 
 }
